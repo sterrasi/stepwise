@@ -1,0 +1,46 @@
+
+# STEPWISE APP CONFIG
+[server]
+
+# address to start the server on
+address = "localhost:8443"
+
+    [server.tls]
+    # For dev the minica.pem cert needs to be trusted
+    cert = "./dev/ssl/certs/cert.pem"
+    key = "./dev/ssl/certs/key.pem"
+
+    # For production use letsencrypt.org
+    #
+    # [server.auto-tls]
+    # # directory to store and retrieve previously obtained certificates as opaque data.
+    # cert-cache-dir = "./dev/ssl/cert-cache"
+    # # array of host names to only allow
+    # #host-white-list = ["stepwise.com"]
+
+[database]
+# thinking sqlite3 for dev and postgres for prod
+type = "sqlite3"
+file = "./dev/db/sw.db"
+migrate = true
+
+[users]
+# this is controlled as a user setting
+default-results-per-page = 20
+
+[logging]
+# one of (debug|info|warn|error).. defaults to 'info'
+level = "debug"
+
+# if unspecified file logging will be disabled
+file = "./stepwise.log"
+
+# format of the log messages (text|json)
+format = "text"
+
+# set to true to log http request information.. defaults to 'false'
+log-requests=true
+
+# set to true to log startup information (environment, configuration, application header)
+log-startup-info=true
+

@@ -1,0 +1,6 @@
+{
+	"comment": "123abc.com",
+	"ignore": "test appengine",
+    "package": [ ],
+    "rootPath": "github.com/sterrasi/stepwise"
+}
