@@ -32,8 +32,8 @@ type DatabaseConfig struct {
 	Migrate bool   `mapstructure:"migrate"`
 }
 
-// initializes the GORM database
-func initDatabase(databaseConfig *DatabaseConfig) (*gorm.DB, error) {
+// InitDatabase initializes the GORM database
+func InitDatabase(databaseConfig *DatabaseConfig) (*gorm.DB, error) {
 
 	var err error
 	var db *gorm.DB

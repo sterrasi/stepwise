@@ -9,6 +9,7 @@ import (
 
 	"github.com/sterrasi/stepwise/logging"
 	"github.com/sterrasi/stepwise/users"
+	"github.com/sterrasi/stepwise/util"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -43,7 +44,7 @@ type ServerConfig struct {
 var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: "start the Stepwise web application",
-	Long: "Starts an instance of the stepwise web application.",
+	Long:  "Starts an instance of the stepwise web application.",
 
 	Run: func(cmd *cobra.Command, args []string) {
 
@@ -97,7 +98,7 @@ func hello(c echo.Context) error {
 
 // initializes the GORM database
 func initDatabase() (*gorm.DB, error) {
-	databaseConfig := &DatabaseConfig{}
+	databaseConfig := &util.DatabaseConfig{}
 
 	var err error
 	var db *gorm.DB
@@ -106,9 +107,9 @@ func initDatabase() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	db, err = util.initDatabase(databaseConfig)
-	if err ! nil {
-		return err
+	db, err = util.InitDatabase(databaseConfig)
+	if err != nil {
+		return nil, err
 	}
 
 	if databaseConfig.Migrate {
